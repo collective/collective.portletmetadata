@@ -16,7 +16,9 @@ setup(
     ]),
     classifiers=[
         "Framework :: Plone",
-        "Programming Language :: Python",
+        "Framework :: Plone :: 5.0",
+        "Framework :: Plone :: 5.1",
+        "Programming Language :: Python"
     ],
     keywords='',
     author='Bo Simonsen',
