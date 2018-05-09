@@ -16,6 +16,14 @@ Out of the box the product provides the following features:
   in the controlpanel (stored in registry).
 * Possibility for excluding a portlet from being indexed by Google.
 
+
+Plone version compatibility
+---------------------------
+
+Version 1.3 and upwards are Plone 5 only. If you want to install/use collective.portletmetadata
+on Plone 4.3, stick to version 1.2.
+
+
 Usage
 -----
 
