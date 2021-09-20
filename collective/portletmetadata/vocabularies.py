@@ -3,15 +3,15 @@ from collective.portletmetadata.interfaces import IMetadataSettings
 from plone.registry.interfaces import IRegistry
 
 from zope.component import getUtility
-from zope.interface import implements
+from zope.interface import implementer
 
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
 
+@implementer(IVocabularyFactory)
 class CssClassesVocabulary(object):
     """ Vocabulary for css classes, stored in the registry. """
-    implements(IVocabularyFactory)
 
     def __call__(self, context):
         result = []

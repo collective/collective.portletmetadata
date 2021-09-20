@@ -1,4 +1,4 @@
-import patches
+from . import patches
 
 
 from zope.i18nmessageid import MessageFactory

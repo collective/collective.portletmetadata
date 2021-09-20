@@ -4,7 +4,9 @@ Changes
 1.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fix for Plone 5.2 and Python 3 compatibility.
+  Should still work on Plone 5.0 and between as well.
+  [maurits]
 
 
 1.3 (2018-01-17)

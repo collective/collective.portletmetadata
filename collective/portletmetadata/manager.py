@@ -1,5 +1,5 @@
 from zope.interface import Interface
-from zope.component import adapts
+from zope.component import adapter
 from zope.publisher.interfaces.browser import IBrowserView
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
@@ -13,8 +13,8 @@ from plone.app.portlets.manager import ColumnPortletManagerRenderer as \
     BaseColumnPortletManagerRenderer
 
 
+@adapter(Interface, IDefaultBrowserLayer, IBrowserView, IColumn)
 class ColumnPortletManagerRenderer(BaseColumnPortletManagerRenderer):
-    adapts(Interface, IDefaultBrowserLayer, IBrowserView, IColumn)
 
     template = ViewPageTemplateFile('column.pt')
 
