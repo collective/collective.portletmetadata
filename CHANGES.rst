@@ -1,8 +1,8 @@
 Changes
 =======
 
-1.4 (unreleased)
-----------------
+1.4.0.dev0+zest1 (2021-10-04)
+-----------------------------
 
 - Fix for Plone 5.2 and Python 3 compatibility.
   Should still work on Plone 5.0 and between as well.
