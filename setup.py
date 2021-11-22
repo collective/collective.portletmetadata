@@ -32,7 +32,7 @@ setup(
     install_requires=[
         'collective.monkeypatcher',
         'plone.portlets',
-        'plone.app.portlets>=4.0.0',
+        'plone.app.portlets>=3.0.0',
         'setuptools',
         'z3c.jbot',
         'z3c.unconfigure>=1.0.1',
