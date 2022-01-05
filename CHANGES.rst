@@ -1,7 +1,7 @@
 Changes
 =======
 
-1.4 (unreleased)
+1.4 (2022-01-05)
 ----------------
 
 - Fix for Plone 5.2 and Python 3 compatibility.
