@@ -4,17 +4,17 @@ from plone.portlets.interfaces import (
     IPortletAssignment
 )
 
-from zope.component import adapts
-from zope.interface import implements
+from zope.component import adapter
+from zope.interface import implementer
 
 from z3c.form import field
 
 from collective.portletmetadata.interfaces import IPortletMetadata
 
 
+@adapter(IPortletAssignment)
+@implementer(IPortletMetadata)
 class PortletMetadataAdapter(object):
-    adapts(IPortletAssignment)
-    implements(IPortletMetadata)
 
     def __init__(self, context):
         # avoid recursion

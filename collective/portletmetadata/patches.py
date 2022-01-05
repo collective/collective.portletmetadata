@@ -18,6 +18,7 @@ from plone.portlets.interfaces import IPortletRetriever
 from plone.portlets.utils import hashPortletInfo
 
 from zope.component import getMultiAdapter, queryMultiAdapter
+from six.moves import range
 
 logger = logging.getLogger('portlets')
 
@@ -88,7 +89,7 @@ def _lazyLoadPortlets(self, manager):
             isAvailable = renderer.available
         except ConflictError:
             raise
-        except Exception, e:
+        except Exception as e:
             isAvailable = False
             logger.exception(
                 "Error while determining renderer availability of portlet "
