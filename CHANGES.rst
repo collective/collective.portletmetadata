@@ -4,7 +4,9 @@ Changes
 1.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix Plone 5.0 support by downgrading the minimum ``plone.app.portlets`` version to be 3.0.0.
+  The 3.x series of plone.app.portlets is the version used by Plone 5.0.
+  [JeffersonBledsoe]
 
 
 1.4 (2022-01-05)
