@@ -1,7 +1,7 @@
 Changes
 =======
 
-1.4.1 (unreleased)
+1.4.1 (2022-03-14)
 ------------------
 
 - Fix Plone 5.0 support by downgrading the minimum ``plone.app.portlets`` version to be 3.0.0.
