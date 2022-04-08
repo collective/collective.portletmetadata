@@ -5,7 +5,7 @@ from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 from Acquisition import aq_inner, aq_parent
 
-from Products.CMFPlone.utils import isDefaultPage
+from Products.CMFPlone.defaultpage import check_default_page_via_view
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from plone.app.portlets.interfaces import IColumn
@@ -23,7 +23,7 @@ class ColumnPortletManagerRenderer(BaseColumnPortletManagerRenderer):
         """
         if info['settings'].get('is_local', False):
             compare_context = self.context
-            if isDefaultPage(self.context, self.request):
+            if check_default_page_via_view(self.context, self.request):
                 compare_context = aq_parent(aq_inner(self.context))
             if '/'.join(compare_context.getPhysicalPath()) != info['key']:
                 return False

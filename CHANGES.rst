@@ -4,7 +4,9 @@ Changes
 1.4.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix ImportError on Plone 6, for isDefaultPage.
+  Note: compatibility not yet fully tested.
+  [maurits]
 
 
 1.4.1 (2022-03-14)
