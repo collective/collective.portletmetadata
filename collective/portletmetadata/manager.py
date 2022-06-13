@@ -15,15 +15,15 @@ from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 @adapter(Interface, IDefaultBrowserLayer, IBrowserView, IColumn)
 class ColumnPortletManagerRenderer(BaseColumnPortletManagerRenderer):
 
-    template = ViewPageTemplateFile('column.pt')
+    template = ViewPageTemplateFile("column.pt")
 
     def available(self, info):
         """Only make available on definition context"""
-        if info['settings'].get('is_local', False):
+        if info["settings"].get("is_local", False):
             compare_context = self.context
             if check_default_page_via_view(self.context, self.request):
                 compare_context = aq_parent(aq_inner(self.context))
-            if '/'.join(compare_context.getPhysicalPath()) != info['key']:
+            if "/".join(compare_context.getPhysicalPath()) != info["key"]:
                 return False
 
         return True

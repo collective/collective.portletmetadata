@@ -31,7 +31,7 @@ class IPortletMetadata(Interface):
     css_class = schema.Choice(
         title=_(u"CSS class"),
         description=_(u" "),
-        vocabulary='collective.portletmetadata.CssClasses',
+        vocabulary="collective.portletmetadata.CssClasses",
         required=False,
     )
 
