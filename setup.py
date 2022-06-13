@@ -1,19 +1,25 @@
+from setuptools import find_packages
+from setuptools import setup
+
 import os
-from setuptools import setup, find_packages
+
 
 def read(*pathnames):
     return open(os.path.join(os.path.dirname(__file__), *pathnames)).read()
 
-version = '1.4.2.dev0'
+
+version = "1.4.2.dev0"
 
 setup(
-    name='collective.portletmetadata',
+    name="collective.portletmetadata",
     version=version,
     description="Adds metadata functionality to portlets",
-    long_description='\n'.join([
-        read('README.rst'),
-        read('CHANGES.rst'),
-    ]),
+    long_description="\n".join(
+        [
+            read("README.rst"),
+            read("CHANGES.rst"),
+        ]
+    ),
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Framework :: Plone",
@@ -27,22 +33,22 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
-    keywords='portlets metadata class',
-    author='Bo Simonsen',
-    author_email='bo@headnet.dk',
-    url='http://github.com/collective/collective.portletmetadata',
-    license='GPL',
-    packages=find_packages(exclude=['ez_setup']),
-    namespace_packages=['collective'],
+    keywords="portlets metadata class",
+    author="Bo Simonsen",
+    author_email="bo@headnet.dk",
+    url="http://github.com/collective/collective.portletmetadata",
+    license="GPL",
+    packages=find_packages(exclude=["ez_setup"]),
+    namespace_packages=["collective"],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'collective.monkeypatcher',
-        'plone.portlets',
-        'plone.app.portlets>=3.0.0',
-        'setuptools',
-        'z3c.jbot',
-        'z3c.unconfigure>=1.0.1',
+        "collective.monkeypatcher",
+        "plone.portlets",
+        "plone.app.portlets>=3.0.0",
+        "setuptools",
+        "z3c.jbot",
+        "z3c.unconfigure>=1.0.1",
         # -*- Extra requirements: -*-
     ],
     entry_points="""
