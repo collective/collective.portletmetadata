@@ -8,17 +8,17 @@
 """
 
 
-import logging
-
-from ZODB.POSException import ConflictError
-
 from plone.memoize.view import memoize
 from plone.portlets.interfaces import IPortletAssignmentSettings
 from plone.portlets.interfaces import IPortletRetriever
 from plone.portlets.utils import hashPortletInfo
-
-from zope.component import getMultiAdapter, queryMultiAdapter
 from six.moves import range
+from ZODB.POSException import ConflictError
+from zope.component import getMultiAdapter
+from zope.component import queryMultiAdapter
+
+import logging
+
 
 logger = logging.getLogger('portlets')
 

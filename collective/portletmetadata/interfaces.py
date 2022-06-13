@@ -1,7 +1,6 @@
 from collective.portletmetadata import MessageFactory as _
-
-from zope.interface import Interface
 from zope import schema
+from zope.interface import Interface
 
 
 class IBrowserLayer(Interface):

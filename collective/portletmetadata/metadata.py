@@ -1,15 +1,10 @@
+from collective.portletmetadata.interfaces import IPortletMetadata
 from plone.app.portlets.browser import formhelper
-from plone.portlets.interfaces import (
-    IPortletAssignmentSettings,
-    IPortletAssignment
-)
-
+from plone.portlets.interfaces import IPortletAssignment
+from plone.portlets.interfaces import IPortletAssignmentSettings
+from z3c.form import field
 from zope.component import adapter
 from zope.interface import implementer
-
-from z3c.form import field
-
-from collective.portletmetadata.interfaces import IPortletMetadata
 
 
 @adapter(IPortletAssignment)
