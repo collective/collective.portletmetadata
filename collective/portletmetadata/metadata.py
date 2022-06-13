@@ -2,7 +2,6 @@ from collective.portletmetadata.interfaces import IPortletMetadata
 from plone.app.portlets.browser import formhelper
 from plone.portlets.interfaces import IPortletAssignment
 from plone.portlets.interfaces import IPortletAssignmentSettings
-from z3c.form import field
 from zope.component import adapter
 from zope.interface import implementer
 
@@ -25,7 +24,6 @@ class PortletMetadataAdapter(object):
 
 class PortletMetadataEditForm(formhelper.EditForm):
     label = u"Edit portlet settings"
-    # fields = field.Fields(IPortletMetadata)
     schema = IPortletMetadata
 
     def getContent(self):

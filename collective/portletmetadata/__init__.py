@@ -1,4 +1,4 @@
-from . import patches
+from . import patches  # noqa F401
 from zope.i18nmessageid import MessageFactory
 
 
