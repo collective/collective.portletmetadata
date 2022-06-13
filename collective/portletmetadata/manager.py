@@ -18,8 +18,7 @@ class ColumnPortletManagerRenderer(BaseColumnPortletManagerRenderer):
     template = ViewPageTemplateFile('column.pt')
 
     def available(self, info):
-        """Only make available on definition context
-        """
+        """Only make available on definition context"""
         if info['settings'].get('is_local', False):
             compare_context = self.context
             if check_default_page_via_view(self.context, self.request):

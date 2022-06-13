@@ -34,7 +34,8 @@ def portlets_for_assignments(self, assignments, manager, base_url):
             name = assignments[idx].__Broken_state__['__name__']
 
         editview = queryMultiAdapter(
-            (assignments[idx], self.request), name='edit', default=None)
+            (assignments[idx], self.request), name='edit', default=None
+        )
 
         if editview is None:
             editviewName = ''
@@ -44,8 +45,13 @@ def portlets_for_assignments(self, assignments, manager, base_url):
         settingsviewName = '%s/%s/edit-portlet-metadata' % (base_url, name)
 
         portlet_hash = hashPortletInfo(
-            dict(manager=manager.__name__, category=category,
-                 key=key, name=name,))
+            dict(
+                manager=manager.__name__,
+                category=category,
+                key=key,
+                name=name,
+            )
+        )
 
         try:
             settings = IPortletAssignmentSettings(assignments[idx])
@@ -53,19 +59,21 @@ def portlets_for_assignments(self, assignments, manager, base_url):
         except TypeError:
             visible = False
 
-        data.append({
-            'title': assignments[idx].title,
-            'editview': editviewName,
-            'hash': portlet_hash,
-            'name': name,
-            'up_url': '%s/@@move-portlet-up' % (base_url),
-            'down_url': '%s/@@move-portlet-down' % (base_url),
-            'delete_url': '%s/@@delete-portlet' % (base_url),
-            'metadata_url': settingsviewName,
-            'hide_url': '%s/@@toggle-visibility' % (base_url),
-            'show_url': '%s/@@toggle-visibility' % (base_url),
-            'visible': visible,
-        })
+        data.append(
+            {
+                'title': assignments[idx].title,
+                'editview': editviewName,
+                'hash': portlet_hash,
+                'name': name,
+                'up_url': '%s/@@move-portlet-up' % (base_url),
+                'down_url': '%s/@@move-portlet-down' % (base_url),
+                'delete_url': '%s/@@delete-portlet' % (base_url),
+                'metadata_url': settingsviewName,
+                'hide_url': '%s/@@toggle-visibility' % (base_url),
+                'show_url': '%s/@@toggle-visibility' % (base_url),
+                'visible': visible,
+            }
+        )
     if len(data) > 0:
         data[0]['up_url'] = data[-1]['down_url'] = None
 
@@ -93,8 +101,8 @@ def _lazyLoadPortlets(self, manager):
             isAvailable = False
             logger.exception(
                 "Error while determining renderer availability of portlet "
-                "(%r %r %r): %s" % (
-                p['category'], p['key'], p['name'], str(e)))
+                "(%r %r %r): %s" % (p['category'], p['key'], p['name'], str(e))
+            )
 
         info['available'] = isAvailable
 
@@ -105,4 +113,3 @@ def _lazyLoadPortlets(self, manager):
         items.append(info)
 
     return items
-

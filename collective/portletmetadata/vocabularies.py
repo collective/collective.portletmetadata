@@ -9,7 +9,7 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 @implementer(IVocabularyFactory)
 class CssClassesVocabulary(object):
-    """ Vocabulary for css classes, stored in the registry. """
+    """Vocabulary for css classes, stored in the registry."""
 
     def __call__(self, context):
         result = []

@@ -17,6 +17,5 @@ class ControlPanelEditForm(controlpanel.RegistryEditForm):
 
 
 ControlPanel = layout.wrap_form(
-    ControlPanelEditForm,
-    controlpanel.ControlPanelFormWrapper
+    ControlPanelEditForm, controlpanel.ControlPanelFormWrapper
 )

@@ -7,16 +7,19 @@ import os
 def read(*pathnames):
     return open(os.path.join(os.path.dirname(__file__), *pathnames)).read()
 
+
 version = '1.4.2.dev0'
 
 setup(
     name='collective.portletmetadata',
     version=version,
     description="Adds metadata functionality to portlets",
-    long_description='\n'.join([
-        read('README.rst'),
-        read('CHANGES.rst'),
-    ]),
+    long_description='\n'.join(
+        [
+            read('README.rst'),
+            read('CHANGES.rst'),
+        ]
+    ),
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Framework :: Plone",

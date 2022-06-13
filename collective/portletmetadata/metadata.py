@@ -10,7 +10,6 @@ from zope.interface import implementer
 @adapter(IPortletAssignment)
 @implementer(IPortletMetadata)
 class PortletMetadataAdapter(object):
-
     def __init__(self, context):
         # avoid recursion
         self.__dict__['context'] = context
