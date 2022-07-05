@@ -55,6 +55,10 @@
                        tal:attributes="href string:${portlet/editview}?referer=${view/url_quote_referer}"
                        tal:content="portlet/title" />
                     <span class="managedPortletActions">
+                      <a href="#" class="metadata button"
+                         title="Settings"
+                         i18n:attributes="title" i18n:translate="label_settings"
+                         tal:attributes="href string:${portlet/metadata_url}?referer=${view/url_quote_referer}">General settings</a>
                       <form class="portlet-action up" method="POST" tal:attributes="action portlet/up_url"
                           tal:condition="not:repeat/portlet/start">
                         <input type="hidden" name="referer" tal:attributes="value view/url_quote_referer" />

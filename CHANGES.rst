@@ -4,8 +4,11 @@ Changes
 1.4.2 (unreleased)
 ------------------
 
+- Have a different template override for edit manager macros on Plone 6.
+  This uses Bootstrap 5 classes.
+  [maurits]
+
 - Fix ImportError on Plone 6, for isDefaultPage.
-  Note: compatibility not yet fully tested.
   [maurits]
 
 

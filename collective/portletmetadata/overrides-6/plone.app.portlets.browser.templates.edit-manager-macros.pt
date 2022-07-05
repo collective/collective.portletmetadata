@@ -63,6 +63,11 @@
 
         <div class="card-body managedPortletActions">
 
+            <a href="#" class="metadata button btn btn-outline-secondary btn-sm"
+                title="Settings"
+                i18n:attributes="title" i18n:translate="label_settings"
+                tal:attributes="href string:${portlet/metadata_url}?referer=${view/url_quote_referer}">General settings</a>
+
             <form class="portlet-action up" method="POST"
                 tal:attributes="action portlet/up_url"
                 tal:condition="not:repeat/portlet/start">
