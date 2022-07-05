@@ -3,7 +3,7 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:monkey="http://namespaces.plone.org/monkey"
-    xmlns:zcml="http://namespaces.plone.org/zcml"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="collective.portletmetadata">
 
   <include package="collective.monkeypatcher" />
