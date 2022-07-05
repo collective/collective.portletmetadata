@@ -4,6 +4,8 @@ Changes
 1.4.2 (unreleased)
 ------------------
 
+- Fix uninstall to remove our registry settings.  [maurits]
+
 - Have a different template override for edit manager macros on Plone 6.
   This uses Bootstrap 5 classes.
   [maurits]
