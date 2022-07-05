@@ -5,6 +5,10 @@
      portlet metadata administration
    - Second (_lazyLoadPortlets) that ensures that the settings dict
      is exposed to the portlet renderer
+
+Checked by Maurits on 2022-07-05:
+the original methods have not changed since we patched them.
+The patches are still fine on Plone 6.0.0a6.
 """
 
 

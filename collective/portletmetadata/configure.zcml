@@ -64,6 +64,7 @@
         replacement=".patches.portlets_for_assignments"
         />
 
+  <!-- The method we patch is actually in plone.portlets, but is inherited. -->
   <monkey:patch
         description="Propagate portlet assignment settings to the column renderer"
         class="plone.app.portlets.manager.PortletManagerRenderer"
