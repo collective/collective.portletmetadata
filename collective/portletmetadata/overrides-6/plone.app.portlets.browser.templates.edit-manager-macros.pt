@@ -66,6 +66,7 @@
             <a href="#" class="metadata button btn btn-outline-secondary btn-sm"
                 title="Settings"
                 i18n:attributes="title" i18n:translate="label_settings"
+                tal:condition="portlet/metadata_url|nothing"
                 tal:attributes="href string:${portlet/metadata_url}?referer=${view/url_quote_referer}">General settings</a>
 
             <form class="portlet-action up" method="POST"
