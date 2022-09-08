@@ -4,8 +4,18 @@ Changes
 1.4.2 (unreleased)
 ------------------
 
+- Make our patches have no effect when the product is not activated.
+  Until now, when a portlet was marked as local, it was still invisible elsewhere when the product was deactivated,
+  and you could no longer change the setting.
+  [maurits]
+
+- Fix uninstall to remove our registry settings.  [maurits]
+
+- Have a different template override for edit manager macros on Plone 6.
+  This uses Bootstrap 5 classes.
+  [maurits]
+
 - Fix ImportError on Plone 6, for isDefaultPage.
-  Note: compatibility not yet fully tested.
   [maurits]
 
 

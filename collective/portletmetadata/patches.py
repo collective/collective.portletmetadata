@@ -11,7 +11,7 @@ the original methods have not changed since we patched them.
 The patches are still fine on Plone 6.0.0a6.
 """
 
-
+from collective.portletmetadata.interfaces import IBrowserLayer
 from plone.memoize.view import memoize
 from plone.portlets.interfaces import IPortletAssignmentSettings
 from plone.portlets.interfaces import IPortletRetriever
@@ -30,8 +30,8 @@ logger = logging.getLogger("portlets")
 def portlets_for_assignments(self, assignments, manager, base_url):
     category = self.__parent__.category
     key = self.__parent__.key
-
     data = []
+    portlet_metadata_active = IBrowserLayer.providedBy(self.request)
     for idx in range(len(assignments)):
         name = assignments[idx].__name__
         if hasattr(assignments[idx], "__Broken_state__"):
@@ -45,8 +45,6 @@ def portlets_for_assignments(self, assignments, manager, base_url):
             editviewName = ""
         else:
             editviewName = "%s/%s/edit" % (base_url, name)
-
-        settingsviewName = "%s/%s/edit-portlet-metadata" % (base_url, name)
 
         portlet_hash = hashPortletInfo(
             dict(
@@ -72,12 +70,13 @@ def portlets_for_assignments(self, assignments, manager, base_url):
                 "up_url": "%s/@@move-portlet-up" % (base_url),
                 "down_url": "%s/@@move-portlet-down" % (base_url),
                 "delete_url": "%s/@@delete-portlet" % (base_url),
-                "metadata_url": settingsviewName,
                 "hide_url": "%s/@@toggle-visibility" % (base_url),
                 "show_url": "%s/@@toggle-visibility" % (base_url),
                 "visible": visible,
             }
         )
+        if portlet_metadata_active:
+            data[-1]["metadata_url"] = "%s/%s/edit-portlet-metadata" % (base_url, name)
     if len(data) > 0:
         data[0]["up_url"] = data[-1]["down_url"] = None
 
@@ -88,6 +87,7 @@ def portlets_for_assignments(self, assignments, manager, base_url):
 def _lazyLoadPortlets(self, manager):
     retriever = getMultiAdapter((self.context, manager), IPortletRetriever)
     items = []
+    portlet_metadata_active = IBrowserLayer.providedBy(self.request)
     for p in self.filter(retriever.getPortlets()):
         renderer = self._dataToPortlet(p["assignment"].data)
         info = p.copy()
@@ -111,8 +111,9 @@ def _lazyLoadPortlets(self, manager):
         info["available"] = isAvailable
 
         assignments = info["assignment"].__parent__
-        settings = IPortletAssignmentSettings(assignments[info["name"]])
-        info["settings"] = settings
+        if portlet_metadata_active:
+            settings = IPortletAssignmentSettings(assignments[info["name"]])
+            info["settings"] = settings
 
         items.append(info)
 
