@@ -1,7 +1,7 @@
 Changes
 =======
 
-1.5.0 (unreleased)
+1.5.0 (2022-09-08)
 ------------------
 
 - Make our patches have no effect when the product is not activated.
