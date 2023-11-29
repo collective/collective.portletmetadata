@@ -1,7 +1,7 @@
 <tal:block repeat="portlet options/portlets">
   <tal:block condition="python:view.available(portlet)">
     <tal:block condition="portlet/settings/exclude_search | nothing">
-      <tal:block content="structure string:&lt;!-- googleoff: all --&gt;" />
+      <!-- googleoff: all -->
     </tal:block>
     <div class="portletWrapper"
          tal:attributes="
@@ -16,7 +16,7 @@
       </div>
     </div>
     <tal:block condition="portlet/settings/exclude_search | nothing">
-      <tal:block content="structure string:&lt;!-- googleon: all --&gt;" />
+      <!-- googleon: all -->
     </tal:block>
   </tal:block>
 </tal:block>
