@@ -12,21 +12,24 @@ This means we can get rid of the "manage portlets" link that comes along with al
              condition="available"
   >
     <tal:block condition="portlet/settings/exclude_search | nothing">
-      <tal:block content="structure string:&lt;!-- googleoff: all --&gt;" />
+      <!-- googleoff: all -->
     </tal:block>
 
-    <div tal:attributes="
-           id string:portletwrapper-${portlet/hash};
-           class string:portletWrapper kssattr-portlethash-${portlet/hash};
-         ">
-      <div tal:attributes="
-             class string:${portlet/settings/css_class | nothing} ${portlet/settings/custom_css_classes | nothing};
-           ">
+    <div class="portletWrapper kssattr-portlethash-${portlet/hash}"
+         id="portletwrapper-${portlet/hash}"
+    >
+      <div class="${css_class} ${custom_css_classes}"
+           tal:define="
+             css_class portlet/settings/css_class|python:'';
+             custom_css_classes portlet/settings/custom_css_classes|python:'';
+             custom_css_classes python:custom_css_classes.strip();
+           "
+      >
         <tal:block content="structure python:view.safe_render(portlet['renderer'])" />
       </div>
     </div>
     <tal:block condition="portlet/settings/exclude_search | nothing">
-      <tal:block content="structure string:&lt;!-- googleon: all --&gt;" />
+      <!-- googleon: all -->
     </tal:block>
   </tal:block>
 </tal:block>
