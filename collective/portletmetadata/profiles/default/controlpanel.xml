@@ -14,7 +14,7 @@
         url_expr="string:${portal_url}/@@portletmetadata-controlpanel"
         visible="True"
         i18n:attributes="title">
-            <permission>Manage portal</permission>
+            <permission>Portlets: Manage metadata</permission>
     </configlet>
 
 </object>

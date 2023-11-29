@@ -11,6 +11,11 @@
   <include package="plone.app.portlets" />
   <include package="z3c.jbot" file="meta.zcml" />
 
+  <permission
+      id="collective.portletmetadata.ManageMetadata"
+      title="Portlets: Manage metadata"
+      />
+
   <genericsetup:registerProfile
       name="default"
       title="collective.portletmetadata"
@@ -25,6 +30,14 @@
       directory="profiles/uninstall"
       description="Uninstalls the collective.portletmetadata add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:upgradeDepends
+      source="1"
+      destination="2"
+      title="Use new permission 'Portlets: Manage metadata'"
+      profile="collective.portletmetadata:default"
+      import_steps="rolemap controlpanel"
       />
 
   <!-- Core functionality -->
@@ -42,7 +55,7 @@
       name="portletmetadata-controlpanel"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       class=".controlpanel.ControlPanel"
-      permission="cmf.ManagePortal"
+      permission="collective.portletmetadata.ManageMetadata"
       layer=".interfaces.IBrowserLayer"
       />
 

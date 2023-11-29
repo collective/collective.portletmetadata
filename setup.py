@@ -8,7 +8,7 @@ def read(*pathnames):
     return open(os.path.join(os.path.dirname(__file__), *pathnames)).read()
 
 
-version = "1.5.1.dev0"
+version = "1.6.0.dev0"
 
 setup(
     name="collective.portletmetadata",
@@ -35,6 +35,7 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
     ],
     keywords="portlets metadata class",
     author="Bo Simonsen",
@@ -47,12 +48,12 @@ setup(
     zip_safe=False,
     install_requires=[
         "collective.monkeypatcher",
+        "plone.autoform",
         "plone.portlets",
         "plone.app.portlets>=3.0.0",
         "setuptools",
         "z3c.jbot",
         "z3c.unconfigure>=1.0.1",
-        # -*- Extra requirements: -*-
     ],
     entry_points="""
         # -*- Entry points: -*-
