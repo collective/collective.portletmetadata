@@ -51,6 +51,9 @@ class TestFunctional(TestCase):
         self.assertNotIn("googleoff", browser.contents)
         self.assertNotIn("googleon", browser.contents)
 
+        # There should not be a "None" CSS class.
+        self.assertNotIn('class="None', browser.contents)
+
     def test_manage_portlets_view(self):
         # Test the situation before doing any changes.
         # Manage the portlets in the left column of the portal.
