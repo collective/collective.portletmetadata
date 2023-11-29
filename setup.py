@@ -55,6 +55,11 @@ setup(
         "z3c.jbot",
         "z3c.unconfigure>=1.0.1",
     ],
+    extras_require={
+        "test": [
+            "plone.app.testing",
+        ],
+    },
     entry_points="""
         # -*- Entry points: -*-
         [z3c.autoinclude.plugin]
