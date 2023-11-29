@@ -1,4 +1,4 @@
-from collective.portletmetadata import MessageFactory as _
+from .messagefactory import MessageFactory as _
 from plone.autoform import directives as form
 from zope import schema
 from zope.interface import Interface
