@@ -8,7 +8,7 @@ from zope.interface import implementer
 
 @adapter(IPortletAssignment)
 @implementer(IPortletMetadata)
-class PortletMetadataAdapter(object):
+class PortletMetadataAdapter:
     def __init__(self, context):
         # avoid recursion
         self.__dict__["context"] = context
@@ -23,7 +23,7 @@ class PortletMetadataAdapter(object):
 
 
 class PortletMetadataEditForm(formhelper.EditForm):
-    label = u"Edit portlet settings"
+    label = "Edit portlet settings"
     schema = IPortletMetadata
 
     def getContent(self):

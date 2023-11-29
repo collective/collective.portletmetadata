@@ -9,10 +9,10 @@ class ControlPanelEditForm(controlpanel.RegistryEditForm):
     schema = IMetadataSettings
     fields = field.Fields(IMetadataSettings)
 
-    label = _(u"Configure portlet metadata")
+    label = _("Configure portlet metadata")
     description = _(
-        u"This form lets you configure the settings for"
-        u"the portlet metadata extension."
+        "This form lets you configure the settings for"
+        "the portlet metadata extension."
     )
 
 

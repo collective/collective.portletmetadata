@@ -16,7 +16,6 @@ from plone.memoize.view import memoize
 from plone.portlets.interfaces import IPortletAssignmentSettings
 from plone.portlets.interfaces import IPortletRetriever
 from plone.portlets.utils import hashPortletInfo
-from six.moves import range
 from ZODB.POSException import ConflictError
 from zope.component import getMultiAdapter
 from zope.component import queryMultiAdapter
@@ -44,7 +43,7 @@ def portlets_for_assignments(self, assignments, manager, base_url):
         if editview is None:
             editviewName = ""
         else:
-            editviewName = "%s/%s/edit" % (base_url, name)
+            editviewName = f"{base_url}/{name}/edit"
 
         portlet_hash = hashPortletInfo(
             dict(
@@ -76,7 +75,7 @@ def portlets_for_assignments(self, assignments, manager, base_url):
             }
         )
         if portlet_metadata_active:
-            data[-1]["metadata_url"] = "%s/%s/edit-portlet-metadata" % (base_url, name)
+            data[-1]["metadata_url"] = f"{base_url}/{name}/edit-portlet-metadata"
     if len(data) > 0:
         data[0]["up_url"] = data[-1]["down_url"] = None
 
