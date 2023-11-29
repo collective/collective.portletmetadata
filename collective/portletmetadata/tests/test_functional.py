@@ -97,7 +97,7 @@ class TestFunctional(TestCase):
         # Open it and add CSS classes.
         browser.open(cp_url)
         textarea = browser.getControl(label="CSS Classes")
-        wanted_value = "fs-1 p-3|Large font\nfs-3 p-2|Medium font"
+        wanted_value = "fs-1 p-3|Large font\nfs-3 p-2"
         textarea.value = wanted_value
         browser.getControl(label="Save").click()
 

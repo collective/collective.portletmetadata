@@ -16,7 +16,7 @@ class CssClassesVocabulary:
 
         try:
             settings = getUtility(IRegistry).forInterface(IMetadataSettings)
-        except Exception:
+        except Exception:  # pragma: no cover
             return SimpleVocabulary(result)
 
         if settings.css_classes:

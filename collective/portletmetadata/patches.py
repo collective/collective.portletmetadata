@@ -98,9 +98,9 @@ def _lazyLoadPortlets(self, manager):
         del renderer.__portlet_metadata__["renderer"]
         try:
             isAvailable = renderer.available
-        except ConflictError:
+        except ConflictError:  # pragma: no cover
             raise
-        except Exception as e:
+        except Exception as e:  # pragma: no cover
             isAvailable = False
             logger.exception(
                 "Error while determining renderer availability of portlet "
@@ -110,7 +110,7 @@ def _lazyLoadPortlets(self, manager):
         info["available"] = isAvailable
 
         assignments = info["assignment"].__parent__
-        if portlet_metadata_active:
+        if portlet_metadata_active:  # pragma: no branch
             settings = IPortletAssignmentSettings(assignments[info["name"]])
             info["settings"] = settings
 
