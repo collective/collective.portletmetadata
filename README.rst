@@ -23,34 +23,38 @@ Out of the box the product provides the following features:
 Plone version compatibility
 ---------------------------
 
-Version 1.3 and upwards are Plone 5 only. If you want to install/use collective.portletmetadata
-on Plone 4.3, stick to version 1.2.
+* Version 2.0: Plone 6 only.
+* Version 1.5: Plone 5 and 6
+* Version 1.3: Plone 5
+* Version 1.2: Plone 4.3
 
 
 Usage
 -----
 
-Whenever the product is installed a "*" will be visible in the @@manage-portlets
+Whenever the product is installed a "*" will be visible in the ``@@manage-portlets``
 view for each assignment. Whenever the user selects this option, he/she can edit
 the metadata as described above.
 
 See a short guide `here <http://bo.geekworld.dk/introducing-collective-portletmetadata/>`_.
 
+
 Related work
 ------------
 
-Ideally, this feature should be built into plone.app.portlets as described in
-`PLIP 12266 <https://dev.plone.org/ticket/12266>`_ the current milestone is set to
-Plone 5, but until Plone 5 is a reality this product can be used.
+Ideally, these features should be built into ``plone.app.portlets``.
+See `issue 13 <https://github.com/collective/collective.portletmetadata/issues/13>`_.
+
 
 Author
 ------
 
 * Bo Simonsen <bo@headnet.dk>
 
-TODO
-----
 
-* Better documentation
+Maintainer
+----------
+
+* Maurits van Rees <m.van.rees@zestsoftware.nl>
 
 

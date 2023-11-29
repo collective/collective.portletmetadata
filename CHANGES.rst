@@ -1,8 +1,10 @@
 Changes
 =======
 
-1.6.0 (unreleased)
+2.0.0 (unreleased)
 ------------------
+
+- Drop support for Plone 5.
 
 - Add field "Custom CSS classes".
   You can use this to freely add any (Bootstrap) classes, on top of the CSS classes made available in the control panel.

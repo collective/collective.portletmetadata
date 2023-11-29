@@ -8,7 +8,7 @@ def read(*pathnames):
     return open(os.path.join(os.path.dirname(__file__), *pathnames)).read()
 
 
-version = "1.6.0.dev0"
+version = "2.0.0.dev0"
 
 setup(
     name="collective.portletmetadata",
@@ -23,15 +23,9 @@ setup(
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Framework :: Plone",
-        "Framework :: Plone :: 5.0",
-        "Framework :: Plone :: 5.1",
-        "Framework :: Plone :: 5.2",
         "Framework :: Plone :: 6.0",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
@@ -46,6 +40,7 @@ setup(
     namespace_packages=["collective"],
     include_package_data=True,
     zip_safe=False,
+    python_requires=">=3.8",
     install_requires=[
         "collective.monkeypatcher",
         "plone.autoform",
