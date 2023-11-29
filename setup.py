@@ -57,6 +57,7 @@ setup(
     ],
     extras_require={
         "test": [
+            "plone.testing",
             "plone.app.testing",
         ],
     },
