@@ -57,7 +57,7 @@
 
   <browser:page
       name="portletmetadata-controlpanel"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      for="plone.base.interfaces.IPloneSiteRoot"
       class=".controlpanel.ControlPanel"
       permission="collective.portletmetadata.ManageMetadata"
       layer=".interfaces.IBrowserLayer"
