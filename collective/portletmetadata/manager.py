@@ -14,7 +14,6 @@ from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 @adapter(Interface, IDefaultBrowserLayer, IBrowserView, IColumn)
 class ColumnPortletManagerRenderer(BaseColumnPortletManagerRenderer):
-
     template = ViewPageTemplateFile("column.pt")
 
     def available(self, info):
