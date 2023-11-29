@@ -13,3 +13,8 @@ jobs = [
     "dependencies",
     "release_ready",
     ]
+
+[pyproject]
+check_manifest_ignores = """
+    "buildout.cfg",
+"""
