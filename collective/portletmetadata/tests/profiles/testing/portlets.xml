@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<portlets xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="plone"
+>
+  <assignment category="context"
+              key="/"
+              manager="plone.leftcolumn"
+              name="test.portlet1"
+              type="portlets.Search"
+  >
+    <property name="css_class">myclass</property>
+    <property name="test_bool">False</property>
+    <property name="test_tuple">
+      <element>published</element>
+      <element>private</element>
+    </property>
+  </assignment>
+
+
+</portlets>

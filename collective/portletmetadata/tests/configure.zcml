@@ -1,0 +1,19 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    package="collective.portletmetadata"
+    i18n_domain="test"
+    >
+
+  <genericsetup:registerProfile
+      name="testing"
+      title="collective.portletmetadata testing"
+      description="Used for testing only"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFCore.interfaces.ISiteRoot"
+      directory="tests/profiles/testing"
+      />
+
+</configure>
