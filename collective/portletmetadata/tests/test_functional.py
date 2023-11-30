@@ -15,14 +15,14 @@ class TestFunctional(TestCase):
     def setUp(self):
         self.portal = self.layer["portal"]
         self.portal_url = self.portal.absolute_url()
+        # We have a Search portlet on the left.
         self.metadata_url = (
             f"{self.portal_url}/++contextportlets++plone.leftcolumn"
-            "/navigation/edit-portlet-metadata"
+            "/testportlet.search/edit-portlet-metadata"
         )
         setRoles(self.portal, TEST_USER_ID, ["Site Administrator"])
-        # Create content so a navigation portlet shows up.
+        # Create an extra Folder so we can test making a portlet local.
         self.portal.invokeFactory("Folder", id="folder", title="Test Folder")
-        self.portal.folder.invokeFactory("Document", id="doc", title="Test Document")
         transaction.commit()
 
     def get_browser(self):
@@ -33,18 +33,18 @@ class TestFunctional(TestCase):
         browser.handleErrors = False
         return browser
 
-    def test_navigation_portlet_appears(self):
+    def test_search_portlet_appears(self):
         # Test the situation before doing any changes.
-        # Open the portal, check that the navigation portlet is NOT there.
+        # Open the portal, check that the search portlet is there.
         browser = self.get_browser()
         browser.open(self.portal_url)
-        self.assertNotIn("portal-column-one", browser.contents)
-        self.assertNotIn("portletNavigationTree", browser.contents)
+        self.assertIn("portal-column-one", browser.contents)
+        self.assertIn("portletSearch", browser.contents)
 
-        # Open the test folder, check that the navigation portlet is there.
+        # Open the test folder, check that the search portlet is there.
         browser.open(f"{self.portal_url}/folder")
         self.assertIn("portal-column-one", browser.contents)
-        self.assertIn("portletNavigationTree", browser.contents)
+        self.assertIn("portletSearch", browser.contents)
 
         # By default there is no hint for Google to exclude this part of the page
         # from search.
@@ -67,7 +67,7 @@ class TestFunctional(TestCase):
         # Open the metadata, check that expected options are there.
         browser.open(self.metadata_url)
 
-        # local portlet, not tested here
+        # local portlet
         local = browser.getControl(label="Local portlet")
         self.assertFalse(local.selected)
 
@@ -122,10 +122,10 @@ class TestFunctional(TestCase):
 
         browser.getControl(label="Save").click()
 
-        # Check the effect on the navigation portlet as shown in the folder.
+        # Check the effect on the search portlet as shown in the folder.
         browser.open(f"{self.portal_url}/folder")
         self.assertIn("portal-column-one", browser.contents)
-        self.assertIn("portletNavigationTree", browser.contents)
+        self.assertIn("portletSearch", browser.contents)
         self.assertIn(
             'class="fs-1 p-3 m-1 text-decoration-underline"', browser.contents
         )
@@ -138,13 +138,18 @@ class TestFunctional(TestCase):
         local.selected = True
         browser.getControl(label="Save").click()
 
+        # It should still be visible on the site root.
+        browser.open(self.portal_url)
+        self.assertIn("portal-column-one", browser.contents)
+        self.assertIn("portletSearch", browser.contents)
+
         # It should no longer appear in the folder.
         browser.open(f"{self.portal_url}/folder")
 
         # The column is there, but it is empty.
         # TODO: It would be nice if we could remove it.
         # self.assertNotIn("portal-column-one", browser.contents)
-        self.assertNotIn("portletNavigationTree", browser.contents)
+        self.assertNotIn("portletSearch", browser.contents)
 
     def test_exclude_from_search(self):
         # Exclude our test portlet from searching by Google.
@@ -159,7 +164,7 @@ class TestFunctional(TestCase):
         # from search.
         # We expect it in this order:
         off_text = "<!-- googleoff: all -->"
-        portlet_text = "portletNavigationTree"
+        portlet_text = "portletSearch"
         on_text = "<!-- googleon: all -->"
         browser.open(f"{self.portal_url}/folder")
         self.assertIn("portal-column-one", browser.contents)
@@ -181,5 +186,5 @@ class TestFunctional(TestCase):
 
         # The hint is gone.
         browser.open(f"{self.portal_url}/folder")
-        self.assertIn("portletNavigationTree", browser.contents)
+        self.assertIn("portletSearch", browser.contents)
         self.assertNotIn("googleoff", browser.contents)
