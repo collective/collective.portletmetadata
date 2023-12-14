@@ -6,6 +6,10 @@ Changes
 
 - Drop support for Plone 5.
 
+
+1.6.0 (2023-12-14)
+------------------
+
 - Add field "Custom CSS classes".
   You can use this to freely add any (Bootstrap) classes, on top of the CSS classes made available in the control panel.
   The new field and the existing control panel are now only available when you have the new "Portlets: Manage metadata" permission.
