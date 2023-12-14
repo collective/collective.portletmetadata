@@ -1,10 +1,10 @@
 Changes
 =======
 
-1.6.1 (unreleased)
+2.0.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Drop support for Plone 5.
 
 
 1.6.0 (2023-12-14)

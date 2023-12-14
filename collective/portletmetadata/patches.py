@@ -16,7 +16,6 @@ from plone.memoize.view import memoize
 from plone.portlets.interfaces import IPortletAssignmentSettings
 from plone.portlets.interfaces import IPortletRetriever
 from plone.portlets.utils import hashPortletInfo
-from six.moves import range
 from ZODB.POSException import ConflictError
 from zope.component import getMultiAdapter
 from zope.component import queryMultiAdapter
@@ -44,7 +43,7 @@ def portlets_for_assignments(self, assignments, manager, base_url):
         if editview is None:
             editviewName = ""
         else:
-            editviewName = "%s/%s/edit" % (base_url, name)
+            editviewName = f"{base_url}/{name}/edit"
 
         portlet_hash = hashPortletInfo(
             dict(
@@ -76,7 +75,7 @@ def portlets_for_assignments(self, assignments, manager, base_url):
             }
         )
         if portlet_metadata_active:
-            data[-1]["metadata_url"] = "%s/%s/edit-portlet-metadata" % (base_url, name)
+            data[-1]["metadata_url"] = f"{base_url}/{name}/edit-portlet-metadata"
     if len(data) > 0:
         data[0]["up_url"] = data[-1]["down_url"] = None
 
@@ -99,9 +98,9 @@ def _lazyLoadPortlets(self, manager):
         del renderer.__portlet_metadata__["renderer"]
         try:
             isAvailable = renderer.available
-        except ConflictError:
+        except ConflictError:  # pragma: no cover
             raise
-        except Exception as e:
+        except Exception as e:  # pragma: no cover
             isAvailable = False
             logger.exception(
                 "Error while determining renderer availability of portlet "
@@ -111,7 +110,7 @@ def _lazyLoadPortlets(self, manager):
         info["available"] = isAvailable
 
         assignments = info["assignment"].__parent__
-        if portlet_metadata_active:
+        if portlet_metadata_active:  # pragma: no branch
             settings = IPortletAssignmentSettings(assignments[info["name"]])
             info["settings"] = settings
 

@@ -1,4 +1,4 @@
-from collective.portletmetadata import MessageFactory as _
+from .messagefactory import MessageFactory as _
 from collective.portletmetadata.interfaces import IMetadataSettings
 from plone.app.registry.browser import controlpanel
 from plone.z3cform import layout
@@ -9,10 +9,10 @@ class ControlPanelEditForm(controlpanel.RegistryEditForm):
     schema = IMetadataSettings
     fields = field.Fields(IMetadataSettings)
 
-    label = _(u"Configure portlet metadata")
+    label = _("Configure portlet metadata")
     description = _(
-        u"This form lets you configure the settings for"
-        u"the portlet metadata extension."
+        "This form lets you configure the settings for"
+        "the portlet metadata extension."
     )
 
 

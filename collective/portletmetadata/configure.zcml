@@ -4,12 +4,16 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:monkey="http://namespaces.plone.org/monkey"
     xmlns:zcml="http://namespaces.zope.org/zcml"
-    i18n_domain="collective.portletmetadata">
+    i18n_domain="collective.portletmetadata"
+    >
 
   <include package="collective.monkeypatcher" />
   <include package="Products.CMFCore" />
   <include package="plone.app.portlets" />
-  <include package="z3c.jbot" file="meta.zcml" />
+  <include
+      package="z3c.jbot"
+      file="meta.zcml"
+      />
 
   <permission
       id="collective.portletmetadata.ManageMetadata"
@@ -19,41 +23,41 @@
   <genericsetup:registerProfile
       name="default"
       title="collective.portletmetadata"
-      directory="profiles/default"
       description="Installs the collective.portletmetadata package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/default"
       />
 
   <genericsetup:registerProfile
       name="uninstall"
       title="collective.portletmetadata (uninstall)"
-      directory="profiles/uninstall"
       description="Uninstalls the collective.portletmetadata add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/uninstall"
       />
 
   <genericsetup:upgradeDepends
-      source="1"
-      destination="2"
       title="Use new permission 'Portlets: Manage metadata'"
       profile="collective.portletmetadata:default"
+      source="1"
+      destination="2"
       import_steps="rolemap controlpanel"
       />
 
   <!-- Core functionality -->
 
-  <adapter factory=".metadata.PortletMetadataAdapter"/>
+  <adapter factory=".metadata.PortletMetadataAdapter" />
 
   <browser:page
       name="edit-portlet-metadata"
-      class=".metadata.PortletMetadataEditForm"
       for="plone.portlets.interfaces.IPortletAssignment"
+      class=".metadata.PortletMetadataEditForm"
       permission="plone.app.portlets.ManageOwnPortlets"
       />
 
   <browser:page
       name="portletmetadata-controlpanel"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      for="plone.base.interfaces.IPloneSiteRoot"
       class=".controlpanel.ControlPanel"
       permission="collective.portletmetadata.ManageMetadata"
       layer=".interfaces.IBrowserLayer"
@@ -61,41 +65,47 @@
 
   <utility
       factory=".vocabularies.CssClassesVocabulary"
-      name="collective.portletmetadata.CssClasses"
       provides="zope.schema.interfaces.IVocabularyFactory"
+      name="collective.portletmetadata.CssClasses"
       />
 
   <!-- Overrides and patches -->
 
   <browser:jbot
       directory="overrides"
-      layer=".interfaces.IBrowserLayer" />
+      layer=".interfaces.IBrowserLayer"
+      />
   <browser:jbot
-      zcml:condition="not-have plone-60"
       directory="overrides-5"
-      layer=".interfaces.IBrowserLayer" />
+      layer=".interfaces.IBrowserLayer"
+      zcml:condition="not-have plone-60"
+      />
   <browser:jbot
-      zcml:condition="have plone-60"
       directory="overrides-6"
-      layer=".interfaces.IBrowserLayer" />
+      layer=".interfaces.IBrowserLayer"
+      zcml:condition="have plone-60"
+      />
 
   <monkey:patch
-        description="Adds metadata url to editmanager"
-        class="plone.app.portlets.browser.editmanager.EditPortletManagerRenderer"
-        original="portlets_for_assignments"
-        replacement=".patches.portlets_for_assignments"
-        />
+      original="portlets_for_assignments"
+      replacement=".patches.portlets_for_assignments"
+      class="plone.app.portlets.browser.editmanager.EditPortletManagerRenderer"
+      description="Adds metadata url to editmanager"
+      />
 
   <!-- The method we patch is actually in plone.portlets, but is inherited. -->
   <monkey:patch
-        description="Propagate portlet assignment settings to the column renderer"
-        class="plone.app.portlets.manager.PortletManagerRenderer"
-        original="_lazyLoadPortlets"
-        replacement=".patches._lazyLoadPortlets"
-        />
+      original="_lazyLoadPortlets"
+      replacement=".patches._lazyLoadPortlets"
+      class="plone.app.portlets.manager.PortletManagerRenderer"
+      description="Propagate portlet assignment settings to the column renderer"
+      />
 
   <include package="plone.app.portlets" />
-  <include package="z3c.unconfigure" file="meta.zcml"/>
+  <include
+      package="z3c.unconfigure"
+      file="meta.zcml"
+      />
 
   <unconfigure>
     <adapter
