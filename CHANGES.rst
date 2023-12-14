@@ -1,7 +1,7 @@
 Changes
 =======
 
-1.6.0 (unreleased)
+1.6.0 (2023-12-14)
 ------------------
 
 - Add field "Custom CSS classes".
