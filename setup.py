@@ -8,7 +8,7 @@ def read(*pathnames):
     return open(os.path.join(os.path.dirname(__file__), *pathnames)).read()
 
 
-version = "2.0.0.dev0"
+version = "2.0.0"
 
 setup(
     name="collective.portletmetadata",
