@@ -14,7 +14,7 @@ This means we can get rid of the "manage portlets" link that comes along with al
 
     <div tal:attributes="id string:portletwrapper-${portlet/hash};
                          class string:portletWrapper kssattr-portlethash-${portlet/hash};">
-      <div tal:attributes="class portlet/settings/css_class | nothing">
+      <div tal:attributes="class string:${portlet/settings/css_class | nothing} ${portlet/settings/custom_css_classes | nothing}">
         <tal:block content="structure python:view.safe_render(portlet['renderer'])" />
       </div>
     </div>

@@ -1,4 +1,5 @@
 from collective.portletmetadata import MessageFactory as _
+from plone.autoform import directives as form
 from zope import schema
 from zope.interface import Interface
 
@@ -34,6 +35,16 @@ class IPortletMetadata(Interface):
         vocabulary="collective.portletmetadata.CssClasses",
         required=False,
     )
+
+    custom_css_classes = schema.TextLine(
+        title=_(u"Custom CSS classes"),
+        description=_(
+            u"Freely add any (Bootstrap) classes, "
+            u"on top of the restricted classes above."
+        ),
+        required=False,
+    )
+    form.write_permission(custom_css_classes='collective.portletmetadata.ManageMetadata')
 
     exclude_search = schema.Bool(
         title=(u"Exclude from search"),

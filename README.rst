@@ -14,6 +14,9 @@ Out of the box the product provides the following features:
   even though child settings imply so.
 * Possibility for adding a CSS class for a portlet assignment. These are defined
   in the controlpanel (stored in registry).
+  Since version 1.6 you can add any CSS classes (for example from Bootstrap) in a portlet, without first defining it in the control panel.
+  This is restricted by a permission, so if you do not like this, you can take this permission away from some roles.
+  The field for choosing a pre-defined class is always available.
 * Possibility for excluding a portlet from being indexed by Google.
 
 

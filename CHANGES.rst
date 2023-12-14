@@ -1,10 +1,16 @@
 Changes
 =======
 
-1.5.1 (unreleased)
+1.6.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add field "Custom CSS classes".
+  You can use this to freely add any (Bootstrap) classes, on top of the CSS classes made available in the control panel.
+  The new field and the existing control panel are now only available when you have the new "Portlets: Manage metadata" permission.
+  By default Manager and Site Administrator have this.
+  Previously only a Manager could access the control panel and make CSS classes available.
+  [maurits]
+
 
 
 1.5.0 (2022-09-08)
